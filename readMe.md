@@ -1,6 +1,6 @@
-# RxJS in Angular Workshop Sample code.
+# "RxJS in Angular: Workshop" Sample code.
 
-Angular / RxJS v6 version for Angular MIX 2018
+Angular / RxJS v6 version for AngularMIX 2018
 
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Build with Angular CLI](https://img.shields.io/badge/built%20with-Angular%20CLI-blue.svg)](https://github.com/angular/angular-cli)
