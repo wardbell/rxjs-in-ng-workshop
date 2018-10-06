@@ -1,0 +1,15 @@
+<ng-container *ngIf="key$|async as key">
+  <se-neon *ngIf="key === 'F4'">RX in Angular</se-neon>
+  <se-neon *ngIf="key === 'F2'">Hello ngConf</se-neon>
+</ng-container>
+
+<div class="container">
+  <button-bar>
+    <button routerLink="/" class="home">Home</button>
+    <button routerLink="/movie/1" class="router">Router</button>
+    <button class="toggleSwUrl" (click)="toggleSwUrl()">Toggle SwUrl</button>
+  </button-bar>
+  <div class="MainHolder" #main>
+    <router-outlet></router-outlet>
+  </div>
+</div>

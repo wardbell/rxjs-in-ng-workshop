@@ -1,0 +1,30 @@
+<div class="card" *ngIf="films$|async;let films">
+  <div>There are {{films.length}} results in the set</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let film of films">
+        <td>{{film.title}}</td>
+        <td>{{film.release_date | date:"y"}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <form [formGroup]="form" (ngSubmit)="add()">
+    <p><i><b>Add Movie</b></i></p>
+    <div>
+      <label>Name
+          <input type="text" formControlName="title">
+      </label>
+      <label>Year
+          <input type="number" min=1970 max=2020 formControlName="year">
+      </label>
+    </div>
+    <button type="submit">Add</button>
+    <button type="button" (click)="clear()">Clear local storage</button>
+  </form>
+</div>

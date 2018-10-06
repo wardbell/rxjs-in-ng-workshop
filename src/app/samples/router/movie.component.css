@@ -1,0 +1,32 @@
+button {
+    color: white;
+    background-color:blue;
+    display: inline-block;
+    max-width: 10em;
+    margin: 10px;
+}
+
+button.home {
+    background-color: green;
+}
+
+.title {
+  display: inline-block;
+  width: 300px;
+}
+
+.missing {
+  color: red;
+  display: inline-block;
+  font-style: italic;
+  width: 300px;
+}
+
+:host {
+    display:grid;
+    min-height:50vh;
+    margin:20px;
+    background-color: rgba(207, 235, 248, 0.85);
+    border-radius: 15px;
+    padding:10px;
+}
