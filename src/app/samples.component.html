@@ -74,10 +74,6 @@
     <whip-wheehw></whip-wheehw>
   </button-bar-item> -->
 
-  <button-bar-item *menuText="'rijks'">
-    <p>Search the Rijksmuseum API</p>
-    <app-artists></app-artists>
-  </button-bar-item>
 
   <!--
 <button-bar-item *menuText="'takeWhile*'">
@@ -105,10 +101,5 @@
     <app-rx-operator></app-rx-operator>
 </button-bar-item>
 -->
-  <button-bar-item *ngFor="let artDetail of raki.detail$|async">
-    <p (click)='raki.loadDetail(undefined)' style="cursor:pointer;">
-      <img src="/assets/close.png" style="height:1.2em"> Art info</p>
-    <app-art-detail [artDetail]="artDetail"></app-art-detail>
-  </button-bar-item>
 
 </div>
