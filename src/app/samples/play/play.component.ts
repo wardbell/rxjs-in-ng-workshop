@@ -12,9 +12,8 @@ import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
 
-
-const playName = 'throwError'
-import { play } from './play-throwError';
+const playName = 'loggerOp'
+import { play } from './play-loggerOp';
 
 @Component({
   selector: 'app-play',
@@ -24,6 +23,11 @@ import { play } from './play-throwError';
 
     <div class="buttons">
       <button type="text" (click)="start()">Start</button>
+      <span *ngIf="producer">
+        <button type="text" (click)="next()">Next</button>
+        <button type="text" (click)="error()">Error</button>
+        <button type="text" (click)="complete()">Done</button>
+      </span>
       <button type="text" (click)="clear()">Clear</button>
     </div>
 
@@ -38,34 +42,29 @@ import { play } from './play-throwError';
 })
 export class PlayComponent implements OnDestroy {
 
+
   start() {
 
     const subscriber = messageObserver(this);
 
     this.add('-- Before subscribe');
 
-    play().pipe(
-      logOp()
-    ).subscribe(subscriber);
+    play().subscribe(subscriber);
 
     this.add('-- After subscribe');
 
   }
 
 
-
-
-
-
-
-
-
-
   // #region helpers
   destroy$ = new Subject();
+  complete = () => this.producer && this.producer.complete();
+  error = () => this.producer && this.producer.error('Error');
   errorMessage = '';
   messages: any[] = [];
+  next = () => this.producer && this.producer.next('Next!');
   playName = playName;
+  producer: Rxjs.Observer<any> = null;
 
   add(_: any) {
     this.messages.push(JSON.stringify(_));

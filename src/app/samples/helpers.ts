@@ -1,5 +1,8 @@
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { interval, Observable } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
+
+/** Observable of integers emitted every 1/4 second. Completes after 10 of them */
+export const data$ = interval(250).pipe(take(10));
 
 /** Observer logs to the console with optional name prefix */
 export const loggingObserver = (name?: string) => ({
