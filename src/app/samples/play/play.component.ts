@@ -12,8 +12,8 @@ import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
 
-const playName = 'loggerOp'
-import { play } from './play-loggerOp';
+const playName = 'array-magic'
+import { play } from './play-array-magic';
 
 @Component({
   selector: 'app-play',
@@ -47,11 +47,11 @@ export class PlayComponent implements OnDestroy {
 
     const subscriber = messageObserver(this);
 
-    this.add('-- Before subscribe');
+    this.messages.push('-- Before subscribe --');
 
     play().subscribe(subscriber);
 
-    this.add('-- After subscribe');
+    this.messages.push('-- After subscribe --');
 
   }
 
