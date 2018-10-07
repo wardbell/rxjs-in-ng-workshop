@@ -9,10 +9,9 @@ export function play(...args) {
    * chain with array operators
    */
   const result = arr
-    .filter(i => i % 2)
+    .filter(i => i % 2 === 1)
     .map(i => i * 2)
     .reduce((acc, curr) => acc + curr)
-
 
   return of(result); // 'cause we love observables
 }

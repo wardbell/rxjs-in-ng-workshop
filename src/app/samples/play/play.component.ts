@@ -12,8 +12,8 @@ import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
 
-const playName = 'array-magic'
-import { play } from './play-array-magic';
+const playName = 'pipe-magic'
+import { play } from './play-pipe-magic';
 
 @Component({
   selector: 'app-play',
