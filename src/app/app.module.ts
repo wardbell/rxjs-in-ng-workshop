@@ -20,7 +20,7 @@ import { FilmPeopleComponent } from './samples/film-people/film-people.component
 import { LeakyComponent } from './samples/leaky-component/leaky.component';
 import { MultiStreamComponent } from './samples/multi-stream/multi-stream.component';
 import { PeopleWithHomePlanetComponent } from './samples/fork-join/people-with-home-planet.component';
-import { PlayComponent } from './samples/play.component';
+import { PlayComponent } from './samples/play/play.component';
 import { MovieComponent } from './samples/router/movie.component';
 import { RxOperatorComponent } from './samples/rx-operator/rx-operator.component';
 import { SamplesComponent } from './samples.component';
