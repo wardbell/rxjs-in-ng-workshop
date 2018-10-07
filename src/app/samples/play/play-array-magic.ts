@@ -2,7 +2,7 @@ import { of } from 'rxjs';
 
 export function play(...args) {
 
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   /**
    * To double the odd integers and sum them ...
@@ -11,7 +11,7 @@ export function play(...args) {
   const result = arr
     .filter(i => i % 2 === 1)
     .map(i => i * 2)
-    .reduce((acc, curr) => acc + curr)
+    .reduce((acc, curr) => acc + curr, 0)
 
   return of(result); // 'cause we love observables
 }

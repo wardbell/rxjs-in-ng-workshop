@@ -15,6 +15,12 @@ export const loggingObserver = (name?: string) => ({
 export const logOp = (name?: string) =>
   (obs: Observable<any>) => obs.pipe(tap(loggingObserver(name)));
 
+/**
+ * Custom nameless logger operator
+ * Usage: drop it in a pipe:  data$.pipe(log, filter(...), etc.)
+ */
+export const log = logOp();
+
 /** Observer displays observable emits to a conforming component's UI */
 export const messageObserver = (component: {messages: string[], errorMessage: string}, name?: string) => ({
   next: value => component.messages.push((name ?  `${name}: ` : '') + JSON.stringify(value)),

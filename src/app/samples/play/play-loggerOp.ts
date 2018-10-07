@@ -23,11 +23,17 @@ export const logOp = (name?: string) =>
     op.tap(loggingObserver(name))
   );
 
+/**
+ * Custom nameless logger operator
+ * Usage: drop it in a pipe:  data$.pipe(log, filter(...), etc.)
+ */
+export const log = logOp();
+
 export function play(...args) {
 
   const observable$ = data$.pipe(
-      logOp('Custom logger')
-    );
+    logOp('Custom logger')
+  );
 
   return observable$;
 
