@@ -9,7 +9,7 @@ import { RootObject } from './giphy';
 const API_KEY = 'sEl7UmhvaI69Mrw9h8Ug0xNTnuhCkJpT';
 const WAITIMG = 'https://media0.giphy.com/media/xTkcEQACH24SMPxIQg/100.webp';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class GiphyService {
   cache = new Map<string, string>();
 

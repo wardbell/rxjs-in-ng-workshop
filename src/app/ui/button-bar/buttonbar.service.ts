@@ -7,7 +7,7 @@ export interface Button {
   title: string;
 }
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ButtonbarService {
   private buttonSource = new Subject<Button>();
 

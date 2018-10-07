@@ -17,7 +17,7 @@ import {
 
 import { RootPeople } from '../samples/sw-interfaces';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class SwPeopleService {
 
   // Get a page of people

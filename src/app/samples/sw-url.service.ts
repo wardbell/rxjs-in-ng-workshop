@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class SwUrlService {
   private _url = 'api/swFilms';
   private _urlGood = true;

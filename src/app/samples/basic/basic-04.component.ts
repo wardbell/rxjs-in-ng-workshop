@@ -2,9 +2,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-
-//////  Component //////////
-
 @Component({
   selector: 'app-basic-04',
   template: `

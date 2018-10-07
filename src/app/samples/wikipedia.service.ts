@@ -15,7 +15,7 @@ export interface WikiResult {
 const wikiUrl =
   'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class WikipediaService {
   constructor(private http: HttpClient) {}
 

@@ -32,7 +32,7 @@ export class ButtonBarItemComponent {
 export class ButtonBarItemDirective implements OnInit, OnDestroy {
   @Input('menuText') menuText = '';
   showContent = false;
-  onDestroy = new Subject<void>();
+  destroy$ = new Subject();
 
   constructor(
     private templateRef: TemplateRef<any>,
@@ -45,7 +45,7 @@ export class ButtonBarItemDirective implements OnInit, OnDestroy {
   ngOnInit() {
     this.bbs
       .addButton({ title: this.menuText })
-      .pipe(takeUntil(this.onDestroy))
+      .pipe(takeUntil(this.destroy$))
       .subscribe(_ => {
         this.showContent = !this.showContent;
         if (this.showContent) {
@@ -57,6 +57,6 @@ export class ButtonBarItemDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.onDestroy.next();
+    this.destroy$.next();
   }
 }

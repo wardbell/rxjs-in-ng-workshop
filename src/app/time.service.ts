@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { interval } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class TimeService {
   time$(label = '') {
     return interval(500).pipe(
