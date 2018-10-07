@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 //////  Component //////////
 
 @Component({
-  selector: 'app-raw-04',
+  selector: 'app-basic-04',
   template: `
     <h4>04 - Producer on its own</h4>
 
@@ -26,7 +26,7 @@ import { Observable } from 'rxjs';
     </div>
   `
 })
-export class Raw04Component {
+export class Basic04Component {
 
   errorMessage = '';
   messages: string[] = [];

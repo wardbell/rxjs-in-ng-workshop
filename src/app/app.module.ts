@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { RawModule } from './samples/raw/raw.module';
+import { BasicsModule } from './samples/basic/basics.module';
 
 import { AppComponent } from './app.component';
 import { ButtonBarItemComponent, ButtonBarItemDirective } from './ui/button-bar-item/button-bar-item.component';
@@ -88,7 +88,7 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes),
 
-    RawModule,
+    BasicsModule,
 
   ],
   providers: [

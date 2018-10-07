@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 
 @Component({
-  selector: 'app-raw-01',
+  selector: 'app-basic-01',
   template: `
     <h4>01 - Begin</h4>
 
@@ -15,7 +15,7 @@ import { Observable, Observer } from 'rxjs';
     {{message}}
   `
 })
-export class Raw01Component {
+export class Basic01Component {
 
   message = '';
 

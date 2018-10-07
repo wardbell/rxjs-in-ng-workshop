@@ -33,9 +33,9 @@ class Producer {
 //////  Component //////////
 
 @Component({
-  selector: 'app-raw-03',
+  selector: 'app-basic-02',
   template: `
-    <h4>03 - Subscribe fn params</h4>
+    <h4>02 - Error & Complete</h4>
 
     <div style="margin-bottom: 1rem;">
       <button type="button" (click)="producer.hit()"  >Hit me</button>
@@ -56,7 +56,7 @@ class Producer {
     </div>
   `
 })
-export class Raw03Component implements OnInit {
+export class Basic02Component implements OnInit {
 
   errorMessage = '';
   messages: string[] = [];
@@ -68,15 +68,21 @@ export class Raw03Component implements OnInit {
     (o: Observer<string>) => { this.producer = new Producer(o); }
   );
 
+  // Subscriber: An object with all three Observable methods
+  subscriber = {
+    next: value => this.messages.push(value),
+
+    error: (err: string) => (this.errorMessage = err),
+
+    complete: () => this.messages.push('Observable completed')
+  };
+
+
   ngOnInit() {
 
-    // Subscribe also takes zero-to-three fn params: next, error, complete
-    // Don't need a Subscriber object to subscribe
-    this.observable.subscribe(
-      value => this.messages.push(value),
-      (err: string) => (this.errorMessage = err),
-      () => this.messages.push('Observable completed')
-    );
+    // Subscribe to execute (nothing happens until we subscribe!)
+    // The subscriber will receive emitted values from the observable.
+    this.observable.subscribe(this.subscriber);
 
   }
 

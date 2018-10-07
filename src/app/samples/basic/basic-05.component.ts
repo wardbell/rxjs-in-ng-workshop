@@ -4,7 +4,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 
 @Component({
-  selector: 'app-raw-05',
+  selector: 'app-basic-05',
   template: `
     <h4>05 - Observe keystrokes</h4>
 
@@ -19,7 +19,7 @@ import { Observable, Observer } from 'rxjs';
     </ol>
   `
 })
-export class Raw05Component implements OnInit {
+export class Basic05Component implements OnInit {
 
   @ViewChild('input') inputElRef: ElementRef;
   inputEl: HTMLInputElement;
@@ -29,12 +29,12 @@ export class Raw05Component implements OnInit {
     this.inputEl = this.inputElRef.nativeElement;
 
     // Custom observable listens for input keystrokes
-    const observable = new Observable((o: Observer<KeyboardEvent>) => {
+    const keyupObservable = new Observable((o: Observer<KeyboardEvent>) => {
       const listener = (evt: KeyboardEvent) => o.next(evt);
       this.inputEl.addEventListener('keyup', listener);
     });
 
-    observable.subscribe(
+    keyupObservable.subscribe(
       keyupEvent => {
         console.log('KeyUp event', keyupEvent);
         this.messages.push(this.inputEl.value)
