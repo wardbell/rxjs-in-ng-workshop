@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
+import { RawModule } from './samples/raw/raw.module';
+
 import { AppComponent } from './app.component';
 import { ButtonBarItemComponent, ButtonBarItemDirective } from './ui/button-bar-item/button-bar-item.component';
 import { ButtonBar } from './ui/button-bar/button-bar.component';
@@ -18,7 +20,6 @@ import { FilmPeopleComponent } from './samples/film-people/film-people.component
 import { LeakyComponent } from './samples/leaky-component/leaky.component';
 import { MultiStreamComponent } from './samples/multi-stream/multi-stream.component';
 import { PeopleWithHomePlanetComponent } from './samples/fork-join/people-with-home-planet.component';
-import { RawComponent } from './samples/raw/raw.component';
 import { MovieComponent } from './samples/router/movie.component';
 import { RxOperatorComponent } from './samples/rx-operator/rx-operator.component';
 import { SamplesComponent } from './samples.component';
@@ -64,7 +65,6 @@ const routes: Routes = [
     MovieComponent,
     MultiStreamComponent,
     PeopleWithHomePlanetComponent,
-    RawComponent,
     RxOperatorComponent,
     SamplesComponent,
     Simplefilms2Component,
@@ -87,6 +87,9 @@ const routes: Routes = [
       passThruUnknownUrl: true
     }),
     RouterModule.forRoot(routes),
+
+    RawModule,
+
   ],
   providers: [
     ButtonbarService,
