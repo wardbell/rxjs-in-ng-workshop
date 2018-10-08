@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
     <button (click)="demo='02'">2</button>
     <button (click)="demo='03'">3</button>
     <button (click)="demo='04'">4</button>
-    <button (click)="demo='05'">6</button>
+    <button (click)="demo='05'">5</button>
     <button (click)="demo='06'">6</button>
     <button (click)="demo='07'">7</button>
   </div>

@@ -1,8 +1,7 @@
 // #region imports
 // tslint:disable:member-ordering
-// Namespace to get something you need
 import * as Rxjs from 'rxjs';
-import * as op from 'rxjs/operators';
+import { groupBy, mergeMap, map, reduce, concatMap } from 'rxjs/operators';
 // #endregion imports
 
 export function play(...args) {
@@ -18,13 +17,13 @@ export function play(...args) {
     {id: 1, name: 'typescript'},
     {id: 3, name: 'tslint'}
   ).pipe(
-    op.groupBy(p => p.id, p => p.name),
-    op.mergeMap( (group$) => group$.pipe(op.reduce((acc, cur) => [...acc, cur], ['' + group$.key]))),
-    op.map((arr: string[]) => ({'id': parseInt(arr[0], 10), 'values': arr.slice(1)})),
+    groupBy(p => p.id, p => p.name),
+    mergeMap( (group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], ['' + group$.key]))),
+    map((arr: string[]) => ({'id': parseInt(arr[0], 10), 'values': arr.slice(1)})),
 
 
-    // op.concatMap(_ => Rxjs.throwError('error'))
-    // op.map(_ => { throw new Error('Errorrrr'); })
+    // concatMap(_ => Rxjs.throwError('error'))
+    // map(_ => { throw new Error('Errorrrr'); })
   );
 
   return observable$;

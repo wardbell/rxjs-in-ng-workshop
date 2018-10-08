@@ -1,6 +1,7 @@
-import { of, interval } from 'rxjs';
-
-import { filter, map, reduce, scan, take } from 'rxjs/operators';
+// #region imports
+import { interval } from 'rxjs';
+import { filter, map, scan, take } from 'rxjs/operators';
+// #endregion imports
 
 export function play(...args) {
 
