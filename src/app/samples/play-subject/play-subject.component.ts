@@ -12,8 +12,8 @@ import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
 
-import { play } from './15-replay-subject';
-const playName =       '15-replay-subject';
+import { play } from './11-observable';
+const playName =       '11-observable';
 
 @Component({
   selector: 'app-play-subject',
