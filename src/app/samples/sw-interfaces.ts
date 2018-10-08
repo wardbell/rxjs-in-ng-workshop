@@ -10,7 +10,7 @@ export interface RootObject<T> {
 export interface Movie {
     title: string;
     episode_id?: number;
-    opening_cbasicl?: string;
+    opening_crawl?: string;
     director?: string;
     producer?: string;
     release_date: string;
