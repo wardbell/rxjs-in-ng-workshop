@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SwUrlService } from './samples/sw-url.service';
 
 console.log(`
   ************
@@ -14,4 +15,10 @@ console.log(`
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private swUrlService: SwUrlService) {}
+
+  toggleSwUrl() {
+    this.swUrlService.toggleUrl();
+  }
 }
