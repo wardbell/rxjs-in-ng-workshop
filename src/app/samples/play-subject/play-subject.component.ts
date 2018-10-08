@@ -12,14 +12,14 @@ import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
 
-const playName = '10-subject';
-import { play } from './10-subject';
+import { play } from './15-replay-subject';
+const playName =       '15-replay-subject';
 
 @Component({
-  selector: 'app-play',
-  styleUrls: [ './play.component.scss'],
+  selector: 'app-play-subject',
+  styleUrls: [ './play-subject.component.scss'],
   template: `
-    <h4>Playground - {{playName}}</h4>
+    <h4>Subject Playground - {{playName}}</h4>
 
     <div class="buttons">
       <button type="text" (click)="start()">Start</button>
@@ -40,16 +40,22 @@ import { play } from './10-subject';
     </div>
   `
 })
-export class PlayComponent implements OnDestroy {
+export class PlaySubjectComponent implements OnDestroy {
 
 
   start() {
 
-    const subscriber = messageObserver(this);
-
     this.messages.push('-- Before subscribe --');
 
-    play(this).subscribe(subscriber);
+    const observable$ = play(this);
+
+    observable$.subscribe(messageObserver(this, 'A'));
+    observable$.subscribe(messageObserver(this, 'B'));
+
+    setTimeout(() => {
+      this.messages.push('******* C starts subscribing');
+      observable$.subscribe(messageObserver(this, 'C'));
+    }, 1000)
 
     this.messages.push('-- After subscribe --');
 
