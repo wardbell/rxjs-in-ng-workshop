@@ -1,6 +1,12 @@
 // tslint:disable:member-ordering
 import { Component, OnInit } from '@angular/core';
+
+// RxJS core objects and Observable creators
 import { Observable, Observer } from 'rxjs';
+
+// RxJS operators (you'll use later)
+import * as op from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-basic-01',
@@ -17,7 +23,6 @@ import { Observable, Observer } from 'rxjs';
 })
 export class Basic01Component {
 
-  message = '';
 
   // Producer: A function that takes an Observer and
   // calls certain methods on it when something happens
@@ -27,10 +32,12 @@ export class Basic01Component {
   };
 
 
+
   // Wrap producer as RxJS Observable for safety and features
   observable = new Observable(this.producer);
 
 
+  
   // Subscriber: An object with a next property that does something with a nexted value
   // hint: it's an Observer too!
   subscriber = {
@@ -49,4 +56,6 @@ export class Basic01Component {
   clear() {
     this.message = '';
   }
+
+  message = '';
 }
