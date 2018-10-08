@@ -1,10 +1,8 @@
 // #region imports
 // tslint:disable:member-ordering
 import { Observable } from 'rxjs';
-
-// Namespace to get something you need
-import * as Rxjs from 'rxjs';
-import * as op from 'rxjs/operators';
+// import * as op from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 // #endregion imports
 import { data$ } from '../helpers';
 
@@ -21,7 +19,7 @@ export const loggingObserver = (name?: string) => ({
 export const logOp = (name?: string) =>
   (o: Observable<any>) => o.pipe(
     // use the tap operator for side-effects
-    op.tap(loggingObserver(name))
+    tap(loggingObserver(name))
   );
 
 

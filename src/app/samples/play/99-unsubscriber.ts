@@ -1,8 +1,6 @@
 // #region imports
 // tslint:disable:member-ordering
-// Namespace to get something you need
 import * as Rxjs from 'rxjs';
-import * as op from 'rxjs/operators';
 // #endregion imports
 
 // #region Producer Class

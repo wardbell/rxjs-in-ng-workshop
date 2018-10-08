@@ -1,6 +1,5 @@
-import { Observable, of, interval } from 'rxjs';
-
-import { filter, map, reduce, scan, take } from 'rxjs/operators';
+import { Observable, interval } from 'rxjs';
+import { filter, map, reduce, take } from 'rxjs/operators';
 
 // #region Custom operators
 
@@ -18,6 +17,7 @@ const takeMaybe = (toTake?: number) => <T> (o: Observable<T>) => toTake ? o.pipe
  */
 export const oddDoublerOp = (toTake = 10) => (o: Observable<number>) =>
   o.pipe(
+    // Uses our custom operator in the context of Pipe
     takeMaybe(toTake),
     filter(i => i % 2 === 1),
     map(i => i * 2),
