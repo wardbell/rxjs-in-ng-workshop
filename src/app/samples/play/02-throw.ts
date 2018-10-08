@@ -7,9 +7,7 @@ import * as op from 'rxjs/operators';
 
 export function play(...args) {
 
-  const array = [10, 20, 30];
-
-  const numbers$ = Rxjs.from(array)
+  const numbers$ = Rxjs.of(10, 20, 30, 40, 50);
 
   const observable$ = numbers$.pipe(
     op.map(_ => { throw new Error('Errorrrr'); })
