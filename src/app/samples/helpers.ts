@@ -1,4 +1,4 @@
-import { interval, Observable } from 'rxjs';
+import { interval, Observable, Subscription } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 
 /** Observable of integers emitted every 1/4 second. Completes after 10 of them */
@@ -27,3 +27,35 @@ export const messageObserver = (component: {messages: string[], errorMessage: st
   error: error => component.errorMessage = (name ?  `${name}: ` : '') + error,
   complete: () => component.messages.push((name ?  `${name}: ` : '') + 'Completed')
 });
+
+/**
+ * Subscription sink that holds Observable subscriptions
+ * until you call unsubscribe on it in ngOnDestroy.
+ *
+ * @example
+ *   private subs = new SubSink();
+ */
+
+export class SubSink {
+  private _subs: Subscription[] = [];
+
+  /**
+   * Assign subscription to this sink
+   * @example
+   *  this.subs.sink = observable$.subscribe(...);
+   */
+  set sink(subscription: Subscription) {
+    this._subs.push(subscription);
+  }
+
+  /**
+   * Unsubscribe to all subscriptions in ngOnDestroy()
+   * @example
+   *   ngOnDestroy() {
+   *     this.subs.unsubscribe();
+   *   }
+   */
+  unsubscribe() {
+    this._subs.forEach(sub => sub.unsubscribe());
+  }
+}

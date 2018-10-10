@@ -31,6 +31,7 @@ import { Simplefilms2Component } from './samples/simplefilms2/simplefilms2.compo
 import { Simplefilms3Component } from './samples/simplefilms3/simplefilms3.component';
 import { Simplefilms4Component } from './samples/simplefilms4/simplefilms4.component';
 import { SwPeopleFindComponent } from './samples/sw-people-find/sw-people-find.component';
+import { SubSinkComponent } from './samples/sub-sink/sub-sink.component';
 import { TakeUntilComponent } from './samples/take-until/take-until.component';
 import { TakeWhileComponent } from './samples/take-while/take-while.component';
 import { WhipwheehwComponent } from './samples/whipWheehw/whipwheehw.component';
@@ -77,6 +78,7 @@ const routes: Routes = [
     Simplefilms3Component,
     Simplefilms4Component,
     SimpleFilmsComponent,
+    SubSinkComponent,
     SwPeopleComponent,
     SwPeopleFindComponent,
     TakeUntilComponent,
