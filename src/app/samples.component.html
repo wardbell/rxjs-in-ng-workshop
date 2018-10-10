@@ -37,10 +37,14 @@
     <app-error-isolation></app-error-isolation>
   </button-bar-item>
 
+  <button-bar-item *menuText="'Unsubscribe'">
+    <app-unsubscribe></app-unsubscribe>
+  </button-bar-item>
+<!--
   <button-bar-item *menuText="'Memory Leak'">
     <p>Memory leak when fail to unsubscribe</p>
     <p>Open console and click sample's button to close component. The timer keeps ticking even though component is gone.</p>
-    <app-leaky-component></app-leaky-component>
+    <app-leaky></app-leaky>
   </button-bar-item>
 
   <button-bar-item *menuText="'TakeUntil'">
@@ -66,6 +70,7 @@
     <p>Open console and click sample's button to close component and see it stop.</p>
     <app-async></app-async>
   </button-bar-item>
+  -->
 
   <button-bar-item *menuText="'Multi-stream'">
     <p>Combine three film streams into one</p>

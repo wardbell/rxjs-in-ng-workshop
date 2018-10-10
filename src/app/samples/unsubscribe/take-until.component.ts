@@ -9,7 +9,7 @@ let counter = 0;
 
 @Component({
     selector: 'app-take-until',
-    template: ` <p>time: {{ time }}</p>`
+    template: `<p>TakeUntil time: {{ time }}</p>`
 })
 export class TakeUntilComponent implements OnInit, OnDestroy {
   time: string;

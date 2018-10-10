@@ -6,7 +6,7 @@ let counter = 0;
 
 @Component({
   selector: 'app-async',
-  template: `<p>async time: {{ time$ | async }}</p>`
+  template: `<p>AsyncPipe time: {{ time$ | async }}</p>`
 })
 export class AsyncPipeComponent implements OnDestroy {
 

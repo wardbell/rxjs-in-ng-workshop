@@ -12,7 +12,7 @@ let counter = 0;
 @AutoUnsubscribe()
 @Component({
   selector: 'app-auto-unsubscribe',
-  template: ` <p>time: {{ time }}</p>`
+  template: `<p>AutoUnsubscribe time: {{ time }}</p>`
 })
 export class AutoUnsubscribeComponent implements OnInit, OnDestroy {
   time: string;

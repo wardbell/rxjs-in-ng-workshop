@@ -5,11 +5,7 @@ import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-comp-alive',
-  template: `
-
-    <p>time: {{time }}</p>
-
-  `
+  template: `<p>Comp Alive time: {{time }}</p>`
 })
 export class CompAliveComponent implements OnInit, OnDestroy {
 

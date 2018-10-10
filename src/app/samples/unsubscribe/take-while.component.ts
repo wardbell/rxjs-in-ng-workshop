@@ -4,7 +4,7 @@ import { takeWhile } from 'rxjs/operators';
 
 @Component({
     selector: 'app-take-while',
-    template: `<p>onDestroy while {{time }}`
+    template: `<p>TakeWhile {{time }}`
 })
 export class TakeWhileComponent implements OnInit, OnDestroy {
   time: string;

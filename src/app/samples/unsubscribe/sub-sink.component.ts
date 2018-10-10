@@ -10,7 +10,7 @@ let counter = 0;
 
 @Component({
   selector: 'app-sub-sink',
-  template: ` <p>time: {{ time }}</p>`
+  template: ` <p>SubSink time: {{ time }}</p>`
 })
 export class SubSinkComponent implements OnInit, OnDestroy {
   time: string;

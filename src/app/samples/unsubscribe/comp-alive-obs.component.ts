@@ -8,7 +8,7 @@ import { TimeService } from '../../time.service';
 @Component({
   selector: 'app-comp-alive-obs',
   template: `
-    <p>alive OBS time: {{time }}</p>
+    <p>Comp Alive OBS time: {{time }}</p>
   `
 })
 export class CompAliveObsComponent implements OnInit, OnDestroy {

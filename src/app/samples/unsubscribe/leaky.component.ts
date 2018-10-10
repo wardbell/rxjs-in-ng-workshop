@@ -5,8 +5,11 @@ import { Observable } from 'rxjs';
 let counter = 0;
 
 @Component({
-    selector: 'app-leaky-component',
-    template: `<p>time: {{ time }}</p>`
+    selector: 'app-leaky',
+    template: `
+    <p><i>The timer keeps ticking even though component is gone.</i></p>
+    <p>Leaky time: {{ time }}</p>
+    `
 })
 export class LeakyComponent implements OnInit, OnDestroy {
   time: string;
