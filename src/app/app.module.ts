@@ -7,18 +7,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { BasicsModule } from './samples/basic/basics.module';
+import { UnsubscribeModule } from './samples/unsubscribe/unsubscribe.module';
 
 import { AppComponent } from './app.component';
-import { AsyncPipeComponent } from './samples/async-pipe/async-pipe.component';
-import { AutoUnsubscribeComponent } from './samples/auto-unsubscribe/auto-unsubscribe.component';
 import { ButtonBarItemComponent, ButtonBarItemDirective } from './ui/button-bar-item/button-bar-item.component';
 import { ButtonBar } from './ui/button-bar/button-bar.component';
-import { CompAliveObsComponent } from './samples/comp-alive-obs/comp-alive-obs.component';
-import { CompAliveComponent } from './samples/comp-alive/comp-alive.component';
 import { CompIsThereComponent } from './samples/comp-is-there/comp-is-there.component';
 import { ErrorIsolationComponent } from './samples/error-isolation/error-isolation.component';
 import { FilmPeopleComponent } from './samples/film-people/film-people.component';
-import { LeakyComponent } from './samples/leaky-component/leaky.component';
 import { MultiStreamComponent } from './samples/multi-stream/multi-stream.component';
 import { PeopleWithHomePlanetComponent } from './samples/fork-join/people-with-home-planet.component';
 import { PlayComponent } from './samples/play/play.component';
@@ -31,9 +27,6 @@ import { Simplefilms2Component } from './samples/simplefilms2/simplefilms2.compo
 import { Simplefilms3Component } from './samples/simplefilms3/simplefilms3.component';
 import { Simplefilms4Component } from './samples/simplefilms4/simplefilms4.component';
 import { SwPeopleFindComponent } from './samples/sw-people-find/sw-people-find.component';
-import { SubSinkComponent } from './samples/sub-sink/sub-sink.component';
-import { TakeUntilComponent } from './samples/take-until/take-until.component';
-import { TakeWhileComponent } from './samples/take-while/take-while.component';
 import { WhipwheehwComponent } from './samples/whipWheehw/whipwheehw.component';
 import { WikipediaComponent } from './samples/wikipedia/wikipedia.component';
 
@@ -56,17 +49,12 @@ const routes: Routes = [
   declarations: [
     AppComponent,
 
-    AsyncPipeComponent,
-    AutoUnsubscribeComponent,
     ButtonBar,
     ButtonBarItemComponent,
     ButtonBarItemDirective,
-    CompAliveComponent,
-    CompAliveObsComponent,
     CompIsThereComponent,
     ErrorIsolationComponent,
     FilmPeopleComponent,
-    LeakyComponent,
     MovieComponent,
     MultiStreamComponent,
     PeopleWithHomePlanetComponent,
@@ -78,11 +66,8 @@ const routes: Routes = [
     Simplefilms3Component,
     Simplefilms4Component,
     SimpleFilmsComponent,
-    SubSinkComponent,
     SwPeopleComponent,
     SwPeopleFindComponent,
-    TakeUntilComponent,
-    TakeWhileComponent,
     WhipwheehwComponent,
     WikipediaComponent,
   ],
@@ -97,7 +82,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
 
     BasicsModule,
-
+    UnsubscribeModule,
   ],
   bootstrap: [AppComponent]
 })
