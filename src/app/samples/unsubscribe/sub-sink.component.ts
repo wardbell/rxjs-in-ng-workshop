@@ -19,17 +19,26 @@ export class SubSinkComponent implements OnInit, OnDestroy {
   // #1 declare a sink for subscriptions
   private subs = new SubSink();
 
+
   ngOnInit() {
     counter += 1;
     this.time$ = this.timeService.time$(`SubSinkComponent #${counter}`);
 
+    // Create a subscriber for demo purposes ... because we'll subscribe the same way multiple times
+    const subscriber = (() => {
+      const that = this;
+      return {
+        next(time) { that.time = `${name} ${time}`; },
+        error(err) { console.error(err); },
+        complete() { console.log('SubSinkComponent completed'); } // never called!
+      }
+    })();
 
-    // #2 Assign subscription the sink
-    this.subs.sink = this.time$.subscribe(
-        time => (this.time = time),
-        err => console.error(err),
-        () => console.log('SubSinkComponent completed') // never called!
-    );
+    // #2 Assign subscriptions to the sink or call add()
+    this.subs.sink = this.time$.subscribe(subscriber);
+    this.subs.sink = this.time$.subscribe(subscriber);
+    this.subs.sink = this.time$.subscribe(subscriber);
+    this.subs.add(this.time$.subscribe(subscriber)); // this works too
   }
 
   // #3 Call unsubscribe on the sink.

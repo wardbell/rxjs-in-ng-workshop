@@ -16,7 +16,10 @@ export class SubSink {
    * ```
    *   private subs = new SubSink();
    *   ...
-   *   this.subs.sink = observable$.subscribe(...);
+   *   this.subs.add(observable$.subscribe(...)); //
+   *   this.subs.sink = observable$.subscribe(
+   *       ...
+   *   );
    *   ...
    *   ngOnDestroy() {
    *     this.subs.unsubscribe();
@@ -26,7 +29,16 @@ export class SubSink {
   constructor() {}
 
   /**
-   * Assign subscription to this sink
+   * Add subscription to the tracked subscriptions
+   * @example
+   *  this.subs.add(observable$.subscribe(...));
+   */
+  add(subscription: Subscription) {
+    this._subs.push(subscription);
+  }
+
+  /**
+   * Assign subscription to this sink to add it to the tracked subscriptions
    * @example
    *  this.subs.sink = observable$.subscribe(...);
    */
