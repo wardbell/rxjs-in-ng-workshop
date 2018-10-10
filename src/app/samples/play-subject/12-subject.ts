@@ -20,4 +20,7 @@ export function play(...args) {
   });
 
   return subject;
+
+  // WHY IS THE FOLLOWING A BETTER PRACTICE?
+  // return subject.asObservable();
 }

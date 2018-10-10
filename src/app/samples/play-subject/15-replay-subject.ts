@@ -17,8 +17,8 @@ export function play(...args) {
   setTimeout(() => {
     replaySubject.next('Got the data');
 
+    // Try these variations. What happens?
     // replaySubject.error('Oops ... error');
-
     // replaySubject.complete();
 
     replaySubject.next('Got data again');
@@ -26,3 +26,11 @@ export function play(...args) {
 
   return replaySubject;
 }
+
+
+
+/**
+ * As far as I can tell, BehaviorSubject could be implemented with ReplaySubject
+ * // subject = new Rxjs.ReplaySubject(1); // buffer one value
+ * // subject.next('initial'); // immediately next the initial value, before 1st possible subscription.
+ */

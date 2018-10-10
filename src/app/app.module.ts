@@ -9,9 +9,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BasicsModule } from './samples/basic/basics.module';
 
 import { AppComponent } from './app.component';
+import { AsyncPipeComponent } from './samples/async-pipe/async-pipe.component';
+import { AutoUnsubscribeComponent } from './samples/auto-unsubscribe/auto-unsubscribe.component';
 import { ButtonBarItemComponent, ButtonBarItemDirective } from './ui/button-bar-item/button-bar-item.component';
 import { ButtonBar } from './ui/button-bar/button-bar.component';
-import { AsyncPipeComponent } from './samples/async-pipe/async-pipe.component';
 import { CompAliveObsComponent } from './samples/comp-alive-obs/comp-alive-obs.component';
 import { CompAliveComponent } from './samples/comp-alive/comp-alive.component';
 import { CompIsThereComponent } from './samples/comp-is-there/comp-is-there.component';
@@ -55,6 +56,7 @@ const routes: Routes = [
     AppComponent,
 
     AsyncPipeComponent,
+    AutoUnsubscribeComponent,
     ButtonBar,
     ButtonBarItemComponent,
     ButtonBarItemDirective,

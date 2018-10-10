@@ -13,6 +13,11 @@ export function play(...args) {
 
   setTimeout(() => {
     subject.next('Got the data');
+
+    // Try these variations.
+    // subject.error('BANG!');
+    // subject.complete();
+
   }, 500);
 
   return subject;

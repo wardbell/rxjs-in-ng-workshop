@@ -14,7 +14,7 @@ import * as op from 'rxjs/operators';
 export function play(component: { producer: Rxjs.Observer<string> }) {
 
   // Subject as a producer of Observable values
-  const subject = new Rxjs.Subject();
+  const subject = new Rxjs.Subject<string>();
 
   component.producer = {
     next(value) { subject.next('Subject next: ' + value) },
@@ -25,6 +25,5 @@ export function play(component: { producer: Rxjs.Observer<string> }) {
     }
   }
 
-  return subject;
-
+  return subject.asObservable();
 }

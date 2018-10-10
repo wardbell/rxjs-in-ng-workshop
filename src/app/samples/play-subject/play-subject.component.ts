@@ -1,7 +1,7 @@
 // #region imports
 // tslint:disable:member-ordering
 import { Component, OnDestroy } from '@angular/core';
-import { loggingObserver, logOp, messageObserver } from '../helpers';
+import { log, logOp, loggingObserver, messageObserver } from '../helpers';
 
 // Always available in the playground
 import { Observable, Subject } from 'rxjs';
@@ -49,12 +49,12 @@ export class PlaySubjectComponent implements OnDestroy {
 
     const observable$ = play(this);
 
-    observable$.subscribe(messageObserver(this, 'A'));
-    observable$.subscribe(messageObserver(this, 'B'));
+    observable$.pipe(logOp('A')).subscribe(messageObserver(this, 'A'));
+    observable$.pipe(logOp('B')).subscribe(messageObserver(this, 'B'));
 
     setTimeout(() => {
       this.messages.push('******* C starts subscribing');
-      observable$.subscribe(messageObserver(this, 'C'));
+      observable$.pipe(logOp('C')).subscribe(messageObserver(this, 'C'));
     }, 1000)
 
     this.messages.push('-- After subscribe --');

@@ -15,29 +15,35 @@ export class TakeUntilComponent implements OnInit, OnDestroy {
   time: string;
   time$: Observable<string>
 
-  // #1 - create a Notifier subject
-  private onDestroy$ = new Subject<void>();
-
-  // #2 Call next() on the notifier when component dies
-  ngOnDestroy() {
-    this.onDestroy$.next();
-    console.log(`TakeUntilComponent #${counter} destroyed`);
-  }
+  // #1 - create a component-destroy Notifier subject
+  private destroy$ = new Subject<void>();
 
   ngOnInit() {
     counter += 1;
     this.time$ = this.timeService.time$(`TakeUntilComponent #${counter}`);
     this.time$.pipe(
-      // #3 Pipe notifier into `takeUntil()`
-      takeUntil(this.onDestroy$)
+      // #2 Pipe the destroy-notifier into `takeUntil()`
+      takeUntil(this.destroy$)
     )
     .subscribe(
         time => (this.time = time),
         err => console.error(err),
-        () => console.log('TakeUntil completed')
+        () => console.log('TakeUntilComponent completed')
     );
+  }
+
+  // #3 Call next() on the destroy-notifier when component dies
+  ngOnDestroy() {
+    this.destroy$.next();
+    console.log(`TakeUntilComponent #${counter} destroyed`);
   }
 
   constructor(private timeService: TimeService) {}
 
 }
+
+/**
+ * That's a lot of noise!
+ * Consider "AutoUnsubscribe"
+ * https://github.com/NetanelBasal/ngx-auto-unsubscribe/blob/master/src/auto-unsubscribe.ts
+ */
