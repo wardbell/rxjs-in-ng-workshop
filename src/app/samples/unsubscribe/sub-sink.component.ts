@@ -13,8 +13,8 @@ let counter = 0;
   template: ` <p>SubSink time: {{ time }}</p>`
 })
 export class SubSinkComponent implements OnInit, OnDestroy {
+  prefix = ''
   time: string;
-  time$: Observable<string>
 
   // #1 declare a sink for subscriptions
   private subs = new SubSink();
@@ -22,23 +22,28 @@ export class SubSinkComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     counter += 1;
-    this.time$ = this.timeService.time$(`SubSinkComponent #${counter}`);
+    const time$ = name => this.timeService.time$(`SubSink #${counter} ${name}`);
 
     // Create a subscriber for demo purposes ... because we'll subscribe the same way multiple times
     const subscriber = (() => {
       const that = this;
       return {
-        next(time) { that.time = `${name} ${time}`; },
+        next(time) { that.time = `${time}`; },
         error(err) { console.error(err); },
         complete() { console.log('SubSinkComponent completed'); } // never called!
       }
     })();
 
     // #2 Assign subscriptions to the sink or call add()
-    this.subs.sink = this.time$.subscribe(subscriber);
-    this.subs.sink = this.time$.subscribe(subscriber);
-    this.subs.sink = this.time$.subscribe(subscriber);
-    this.subs.add(this.time$.subscribe(subscriber)); // this works too
+    this.subs.sink = time$('A').subscribe(subscriber);
+    this.subs.sink = time$('B').subscribe(subscriber);
+    this.subs.sink = time$('C').subscribe(subscriber);
+
+    // this works too
+    this.subs.add(
+      time$('D').subscribe(subscriber),
+      time$('E').subscribe(subscriber),
+    );
   }
 
   // #3 Call unsubscribe on the sink.
