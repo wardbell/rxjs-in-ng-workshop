@@ -28,6 +28,10 @@
     <app-simplefilms4></app-simplefilms4>
   </button-bar-item>
 
+  <button-bar-item *menuText="'Message Bus'">
+    <app-bus></app-bus>
+  </button-bar-item>
+
   <button-bar-item *menuText="'WikiPedia'">
     <p>Search wikipedia with autocomplete</p>
     <app-wikipedia></app-wikipedia>
@@ -40,37 +44,7 @@
   <button-bar-item *menuText="'Unsubscribe'">
     <app-unsubscribe></app-unsubscribe>
   </button-bar-item>
-<!--
-  <button-bar-item *menuText="'Memory Leak'">
-    <p>Memory leak when fail to unsubscribe</p>
-    <p>Open console and click sample's button to close component. The timer keeps ticking even though component is gone.</p>
-    <app-leaky></app-leaky>
-  </button-bar-item>
 
-  <button-bar-item *menuText="'TakeUntil'">
-    <p>Use takeUntil to unsubscribe</p>
-    <p>Open console and click sample's button to close component and see it stop.</p>
-    <app-take-until></app-take-until>
-  </button-bar-item>
-
-  <button-bar-item *menuText="'AutoUnsubscribe'">
-    <p>Use AutoUnsubscribe to unsubscribe</p>
-    <p>Open console and click sample's button to close component and see it stop.</p>
-    <app-auto-unsubscribe></app-auto-unsubscribe>
-  </button-bar-item>
-
-  <button-bar-item *menuText="'SubSink'">
-    <p>Use SubSink to unsubscribe</p>
-    <p>Open console and click sample's button to close component and see it stop.</p>
-    <app-sub-sink></app-sub-sink>
-  </button-bar-item>
-
-  <button-bar-item *menuText="'AsyncPipe'">
-    <p>AsyncPipe automatically unsubscribes</p>
-    <p>Open console and click sample's button to close component and see it stop.</p>
-    <app-async></app-async>
-  </button-bar-item>
-  -->
 
   <button-bar-item *menuText="'Multi-stream'">
     <p>Combine three film streams into one</p>

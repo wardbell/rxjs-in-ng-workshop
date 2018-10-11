@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { BasicsModule } from './samples/basic/basics.module';
+import { BusModule } from './samples/bus/bus.module';
 import { UnsubscribeModule } from './samples/unsubscribe/unsubscribe.module';
 
 import { AppComponent } from './app.component';
@@ -82,6 +83,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
 
     BasicsModule,
+    BusModule,
     UnsubscribeModule,
   ],
   bootstrap: [AppComponent]

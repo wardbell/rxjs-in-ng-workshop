@@ -28,7 +28,7 @@ interface Planets {
 export class PeopleWithHomePlanetService {
 
   // load a page of people
-  loadPeople = (url: string): Observable<RootPeople> =>
+  loadPeople$ = (url: string): Observable<RootPeople> =>
     this.http
       .get<RootPeople>(url).pipe(
         catchError(() => of(null))
@@ -36,11 +36,11 @@ export class PeopleWithHomePlanetService {
 
   // load all people from the paged API
   // start off with loading the first page.
-  people$: Observable<People[]> = this.loadPeople(`https://swapi.co/api/people/`).pipe(
+  people$: Observable<People[]> = this.loadPeople$(`https://swapi.co/api/people/`).pipe(
 
     // expand to get additional pages
     // hint: r.next means there's another page
-    expand(r => r.next ? this.loadPeople(r.next) : EMPTY),
+    expand(r => r.next ? this.loadPeople$(r.next) : EMPTY),
 
     // for each page, extract the people (in results)
     map(r => r.results),
@@ -59,7 +59,7 @@ export class PeopleWithHomePlanetService {
   // get a homeworld planet via the url
   // from the cache of planets or from the server
   loadHomePlanet = (homeworldUrl: string): Observable<Planet> => {
-    // use a cahce to prevent prevent double urls.
+    // use a cache to prevent prevent double urls.
     if (this.planetsCache.has(homeworldUrl)) {
       return this.planetsCache.get(homeworldUrl);
     }
@@ -76,8 +76,8 @@ export class PeopleWithHomePlanetService {
   }
 
   // SW people with their homeworld planets
-  // Demonstrates forkJoin but also
-  // demonstrates a bad practice because it makes as many calls for planets as there are people
+  // Demonstrates forkJoin while also adopting a risky practice.
+  // It makes as many calls for planets as there are people.
   // Fortunately, the cache of planets reduces the number of server calls.
   peopleWithHomePlanets$: Observable<PersonWithPlanet[]> = this.people$.pipe(
 
@@ -87,15 +87,10 @@ export class PeopleWithHomePlanetService {
       // An example of resolving a related entity from a foreign key
       const peopleAndPlanets$ = people.map(person =>
 
-        // get the homeworld for each people
+        // get the homeworld for each people and
+        // map each homeworld as a property of the person
         this.loadHomePlanet(person.homeworld).pipe(
-
-          // map each homeworld as a property of the people
-          map(homePlanet => {
-            // clone people with its homeworld
-            return { ...person, homePlanet };
-          }),
-          // catchError is unneeded here, as the 404 is handled by loadHomePlanet?
+          map(homePlanet => ({ ...person, homePlanet })),
         )
       );
 

@@ -1,7 +1,7 @@
 import { TimeService } from '../../time.service';
 import { Component, OnInit, OnDestroy, ComponentRef } from '@angular/core';
 
-import { Subject,Observable } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rx-operator',
