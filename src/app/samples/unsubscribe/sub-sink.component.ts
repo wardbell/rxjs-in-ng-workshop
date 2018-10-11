@@ -4,7 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
-import { SubSink } from '../helpers';
+import { SubSink } from 'subsink';
 
 let counter = 0;
 

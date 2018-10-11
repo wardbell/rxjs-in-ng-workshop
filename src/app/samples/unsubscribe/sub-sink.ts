@@ -3,6 +3,10 @@ import { Subscription } from 'rxjs';
 /**
  * Subscription sink that holds Observable subscriptions
  * until you call unsubscribe on it in ngOnDestroy.
+ *
+ * Now in github and npm
+ *   https://github.com/wardbell/subsink
+ *   npm install subsink --save
  */
 export class SubSink {
 
@@ -13,6 +17,7 @@ export class SubSink {
    * until you call unsubscribe on it in ngOnDestroy.
    *
    * @example
+   * In Angular:
    * ```
    *   private subs = new SubSink();
    *   ...
