@@ -1,3 +1,4 @@
+  // tslint:disable:member-ordering
 /**
  *  add operators: catchError
  *  use .pipe()
@@ -22,25 +23,44 @@ import { SimpleFilmsService4 } from './simple-films4.service';
   <!-- Show films using AsyncPipe -->
   <div *ngFor="let film of films$ | async">{{film.title}}</div>
 
-  <div *ngIf="errorMsg" class="error">{{errorMsg}}</div>
 
   <button (click)="add()">Generate movie</button>
+  <div *ngIf="errorMsg" class="error">{{errorMsg}}</div>
 
   `,
   providers: [ SimpleFilmsService4 ]
 })
-export class Simplefilms4Component implements OnInit {
-  errorMsg: string;
+export class Simplefilms4Component {
 
   // Expose "OBSERVABLE of Movies" instead of Movie[] with AsyncPipe
   // Note the `$` suffix
   films$: Observable<Movie[]>;
 
-  constructor(private filmsService: SimpleFilmsService4) {}
+  constructor(private filmsService: SimpleFilmsService4) {
+    this.films$ = this.filmsService.getFilms()
 
-  ngOnInit() {
-    this.getData();
+    // #region error handling
+    .pipe(
+      // CATCH the user friendly message and display it
+      catchError(errorMessage => {
+        this.errorMsg = errorMessage;
+        return []; // return empty list for display
+      })
+
+    );
+    // #endregion error handling
   }
+
+
+  add() {
+    const movie = { title: 'A New Observer!' } as Movie;
+
+    this.filmsService.add(movie).subscribe(
+      () => this.getData(),
+      errorMessage => this.errorMsg = errorMessage
+    );
+  }
+
 
   getData() {
     this.errorMsg = '';
@@ -57,12 +77,5 @@ export class Simplefilms4Component implements OnInit {
     );
   }
 
-  add() {
-    const movie = { title: 'A New Observer!' } as Movie;
-
-    this.filmsService.add(movie).subscribe(
-      () => this.getData(),
-      errorMessage => this.errorMsg = errorMessage
-    );
-  }
+  errorMsg: string;
 }
