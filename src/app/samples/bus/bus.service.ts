@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Subject, ReplaySubject, BehaviorSubject } from 'Rxjs';
+import { Subject, ReplaySubject, BehaviorSubject } from 'rxjs';
 
 export class Message {
   type: string;
