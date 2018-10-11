@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
-import { data$ } from '../helpers';
+import { timerData$ } from '../helpers';
 
 /** Observer logs to the console with optional name prefix */
 export const loggingObserver = (name?: string) => ({
@@ -37,7 +37,7 @@ export const log = logOp();
 
 export function play(...args) {
 
-  const observable$ = data$.pipe(
+  const observable$ = timerData$.pipe(
     logOp('Custom logger')
   );
 

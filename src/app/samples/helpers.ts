@@ -5,7 +5,7 @@ import { SubSink } from './unsubscribe/sub-sink';
 export { SubSink } from './unsubscribe/sub-sink';
 
 /** Observable of integers emitted every 1/4 second. Completes after 10 of them */
-export const data$ = interval(250).pipe(take(10));
+export const timerData$ = interval(250).pipe(take(10));
 
 /** Observer logs to the console with optional name prefix */
 export const loggingObserver = (name?: string) => ({

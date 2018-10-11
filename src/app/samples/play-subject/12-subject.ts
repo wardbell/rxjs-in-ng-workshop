@@ -5,7 +5,7 @@ import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
 
-import { data$ } from '../helpers';
+import { timerData$ } from '../helpers';
 
 export function play(...args) {
 
@@ -15,7 +15,7 @@ export function play(...args) {
    */
   const subject = new Rxjs.Subject();
 
-  data$.subscribe(n => {
+  timerData$.subscribe(n => {
     subject.next(n)
   });
 

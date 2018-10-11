@@ -5,7 +5,7 @@ import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
 
-import { data$ } from '../helpers';
+import { timerData$ } from '../helpers';
 
   /**
    * Normal Observables notify only a single subscriber (uni-cast)
@@ -13,7 +13,7 @@ import { data$ } from '../helpers';
    */
 export function play(...args) {
 
-  return data$;
+  return timerData$;
 
 
   // HOW WOULD THIS CHANGE THINGS?
