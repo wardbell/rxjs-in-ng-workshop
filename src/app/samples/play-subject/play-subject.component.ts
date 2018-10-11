@@ -26,7 +26,6 @@ const playFns = {
   '15-ReplaySubject': replaySubject15
 }
 
-
 @Component({
   selector: 'app-play-subject',
   templateUrl: './play-subject.component.html',
