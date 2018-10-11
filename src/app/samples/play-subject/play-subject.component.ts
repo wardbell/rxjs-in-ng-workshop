@@ -12,42 +12,43 @@ import * as Rxjs from 'rxjs';
 import * as op from 'rxjs/operators';
 // #endregion imports
 
-import { play } from './11-observable';
-const playName =       '11-observable';
+import { play as observable11 } from './11-observable';
+import { play as subject12 } from './12-subject';
+import { play as subject13 } from './13-subject';
+import { play as behaviorSubject14 } from './14-behavior-subject';
+import { play as replaySubject15 } from './15-replay-subject';
+
+const playFns = {
+  '11-Observable': observable11,
+  '12-Subject': subject12,
+  '13-Subject': subject13,
+  '14-BehaviorSubject': behaviorSubject14,
+  '15-ReplaySubject': replaySubject15
+}
+
 
 @Component({
   selector: 'app-play-subject',
+  templateUrl: './play-subject.component.html',
   styleUrls: [ './play-subject.component.scss'],
-  template: `
-    <h4>Subject Playground - {{playName}}</h4>
-
-    <div class="buttons">
-      <button type="text" (click)="start()">Start</button>
-      <span *ngIf="producer">
-        <button type="text" (click)="next()">Next</button>
-        <button type="text" (click)="error()">Error</button>
-        <button type="text" (click)="complete()">Done</button>
-      </span>
-      <button type="text" (click)="clear()">Clear</button>
-    </div>
-
-    <ol>
-      <li *ngFor="let message of messages">{{message}}</li>
-    </ol>
-
-    <div *ngIf="errorMessage" class="error" >
-      {{errorMessage}}
-    </div>
-  `
 })
 export class PlaySubjectComponent implements OnDestroy {
 
+  playList = Object.keys(playFns);
+  playName = this.playList[0];
+
+  selected(value: any) {
+    this.playName = value;
+    this.producer = undefined;
+    this.errorMessage = '';
+    this.messages = [];
+  }
 
   start() {
 
     this.messages.push('-- Before subscribe --');
 
-    const observable$ = play(this);
+    const observable$ = playFns[this.playName](this);
 
     observable$.pipe(logOp('A')).subscribe(messageObserver(this, 'A'));
     observable$.pipe(logOp('B')).subscribe(messageObserver(this, 'B'));
@@ -61,7 +62,6 @@ export class PlaySubjectComponent implements OnDestroy {
 
   }
 
-
   // #region helpers
   destroy$ = new Subject();
   complete = () => this.producer && this.producer.complete();
@@ -69,12 +69,7 @@ export class PlaySubjectComponent implements OnDestroy {
   errorMessage = '';
   messages: any[] = [];
   next = () => this.producer && this.producer.next('Next!');
-  playName = playName;
   producer: Rxjs.Observer<any> = null;
-
-  add(_: any) {
-    this.messages.push(JSON.stringify(_));
-  }
 
   clear() {
     this.errorMessage = '';
