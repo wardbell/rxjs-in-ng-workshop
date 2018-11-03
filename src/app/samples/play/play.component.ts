@@ -25,6 +25,7 @@ import { play as subject10 } from './10-subject';
 
 import { play as groupBy99 } from './99-groupBy';
 import { play as unsubscriber99 } from './99-unsubscriber';
+import { play as finalize99 } from './99-finalize';
 
 const playFns = {
   '01-map': map01,
@@ -39,6 +40,7 @@ const playFns = {
   '10-subject': subject10,
   '99-groupBy': groupBy99,
   '99-unsubscriber': unsubscriber99,
+  '99-finalize': finalize99,
 }
 
 
@@ -83,6 +85,7 @@ export class PlayComponent implements OnDestroy {
   messages: any[] = [];
   next = () => this.producer && this.producer.next('Next!');
   producer: Rxjs.Observer<any> = null;
+  unsubscribe = () => this.producer && this.subscription.unsubscribe();
 
   clear() {
     this.errorMessage = '';

@@ -10,19 +10,23 @@ class Producer {
   // Various "next" behaviors
   hit() {
     this.observer.next('Hit!');
+    console.log(`next: 'Hit!'`);
   }
 
   stay() {
     this.observer.next('Stay');
+    console.log(`next: 'Stay'`);
   }
 
   // Error behavior
   panic() {
     this.observer.error('Something bad happened');
+    console.log(`error: 'Something bad happened'`);
   }
 
   // Complete behavior
   done() {
+    console.log(`complete()`);
     this.observer.next('Done listening');
     this.observer.complete();
   }

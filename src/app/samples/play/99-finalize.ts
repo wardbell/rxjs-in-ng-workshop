@@ -1,3 +1,7 @@
+/**
+ * Like unsubscriber but with finalize operator on it.
+ * Proves that finalize is called when unsubscribe even if the source didn't terminate.
+*/
 // #region imports
 // tslint:disable:member-ordering
 // Namespace to get something you need
@@ -10,20 +14,20 @@ export class Producer {
   constructor(private observer: Rxjs.Observer<string>) { }
 
   next(value?: string) {
-    console.log(`next: ${value || 'Hit me!'}`);
-    this.observer.next(value || 'Hit me!');
-   }
+   console.log(`next: ${value || 'Hit me!'}`);
+   this.observer.next(value || 'Hit me!');
+  }
 
-   error(err?: string) {
-     console.log(`error: ${err}`);
-     this.observer.error(err);
-   }
+  error(err?: string) {
+    console.log(`error: ${err}`);
+    this.observer.error(err);
+  }
 
-   // Complete behavior
-   complete() {
-     console.log(`complete()`);
-     this.observer.complete();
-   }
+  // Complete behavior
+  complete() {
+    console.log(`complete()`);
+    this.observer.complete();
+  }
 }
 // #endregion Producer Class
 
@@ -48,6 +52,11 @@ export function play(component: { producer: Rxjs.Observer<string> }) {
     }
   });
 
-  return observable$
+  return observable$.pipe(
+    op.finalize(() => {
+      console.log('finalized');
+      alert('FINALIZED')
+    })
+  )
 
 }
