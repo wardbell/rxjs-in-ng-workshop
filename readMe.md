@@ -33,11 +33,11 @@ Open browser localhost:8806
 
 # Changing the current "Play" example
 
-The "Play" and "Play Subject" examples import and run a neighboring code example file.
+The "Play Ops" and "Play Subject" examples import and run a neighboring code example file.
 
 To change the example, import a different file.
 
-1. Open the folder (e.g., `Play`)
+1. Open the folder (e.g., `play-ops`)
 1. Open the component file (e.g., `play.component.ts`)
 1. Find the lines that import an example and set the `playName`
 

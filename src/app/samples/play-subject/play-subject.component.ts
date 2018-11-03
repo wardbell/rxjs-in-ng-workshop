@@ -3,7 +3,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { log, logOp, loggingObserver, messageObserver } from '../helpers';
 
-// Always available in the playground
+// Always available in the subject playground
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

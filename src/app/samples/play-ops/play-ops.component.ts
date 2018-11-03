@@ -3,7 +3,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { loggingObserver, logOp, messageObserver } from '../helpers';
 
-// Always available in the playground
+// Always available in the ops playground
 import { Observable, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -45,11 +45,11 @@ const playFns = {
 
 
 @Component({
-  selector: 'app-play',
-  templateUrl: './play.component.html',
-  styleUrls: [ './play.component.scss'],
+  selector: 'app-play-ops',
+  templateUrl: './play-ops.component.html',
+  styleUrls: [ './play-ops.component.scss'],
 })
-export class PlayComponent implements OnDestroy {
+export class PlayOpsComponent implements OnDestroy {
 
   playList = Object.keys(playFns);
   playName = this.playList[0];

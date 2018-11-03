@@ -18,7 +18,7 @@ import { ErrorIsolationComponent } from './samples/error-isolation/error-isolati
 import { FilmPeopleComponent } from './samples/film-people/film-people.component';
 import { MultiStreamComponent } from './samples/multi-stream/multi-stream.component';
 import { PeopleWithHomePlanetComponent } from './samples/fork-join/people-with-home-planet.component';
-import { PlayComponent } from './samples/play/play.component';
+import { PlayOpsComponent } from './samples/play-ops/play-ops.component';
 import { PlaySubjectComponent } from './samples/play-subject/play-subject.component';
 import { MovieComponent } from './samples/router/movie.component';
 import { RxOperatorComponent } from './samples/rx-operator/rx-operator.component';
@@ -59,7 +59,7 @@ const routes: Routes = [
     MovieComponent,
     MultiStreamComponent,
     PeopleWithHomePlanetComponent,
-    PlayComponent,
+    PlayOpsComponent,
     PlaySubjectComponent,
     RxOperatorComponent,
     SamplesComponent,
